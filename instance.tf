@@ -1,5 +1,10 @@
+resource "aws_eip" "webserver" {
+  instance = "${aws_instance.webserver.id}"
+  vpc = true
+}
+
 resource "aws_instance" "webserver" {
-  ami                  = ""
+  ami                  = "ami-3587b85f"
   availability_zone    = "${var.aws_availability_zone}"
   instance_type        = "t2.nano"
   subnet_id            = "${aws_subnet.default.id}"

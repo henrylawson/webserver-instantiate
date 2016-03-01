@@ -4,8 +4,10 @@ set -xeuo pipefail
 DIR=$( cd $(dirname $0) ; pwd -P )
 TERRAFORM_COMMAND=$1
 TERRAFORM_COMMANDS=$@
-WORKSPACE_DIR=$DIR/../..
-TERRAFORM_CREDS=$WORKSPACE_DIR/libraye/libraye-creds/terraform/aws_credentials.tfvars.crypt
+ROOT_DIR=$DIR/..
+TERRAFORM_CREDS=$ROOT_DIR/keys/creds.tfvars.crypt
+
+cd $ROOT_DIR
 
 terraform remote config \
     -backend=s3 \
