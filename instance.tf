@@ -10,7 +10,7 @@ resource "aws_instance" "webserver" {
   subnet_id            = "${aws_subnet.default.id}"
   security_groups      = ["${aws_security_group.webserver.id}"]
   key_name             = "${aws_key_pair.auth.id}"
-  user_data            = "#!/bin/bash\nsudo apt-get update\nsudo apt-get install -y python-dev"
+  user_data            = "#!/bin/bash\napt-get update\napt-get install -y python-dev"
 
   root_block_device {
     volume_type = "standard"
